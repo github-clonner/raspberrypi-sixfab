@@ -1,0 +1,14 @@
+- name: Ensure dnsmasq is installed
+  become: true
+  package:
+    name: dnsmasq
+    state: present
+
+- name: Install dnsmasq configuration file
+  become: true
+  template:
+    dest: /etc/dnsmasq.d/wlan.conf
+    group: root
+    mode: 0644
+    owner: root
+    src: etc/dnsmasq.d/wlan.conf.j2
