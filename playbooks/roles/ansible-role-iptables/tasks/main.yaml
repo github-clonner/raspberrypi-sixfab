@@ -1,0 +1,23 @@
+- name: Ensure iptables is installed
+  become: true
+  package:
+    name: iptables-persistent
+    state: present
+
+- name: Install iptables v4 rules
+  become: true
+  template:
+    dest: /etc/iptables/rules.v4
+    group: root
+    mode: 0644
+    owner: root
+    src: etc/iptables/rules.v4.j2
+
+- name: Install iptables v6 rules
+  become: true
+  template:
+    dest: /etc/iptables/rules.v6
+    group: root
+    mode: 0644
+    owner: root
+    src: etc/iptables/rules.v6.j2

@@ -1,0 +1,40 @@
+- name: Ensure hostapd is installed
+  become: true
+  package:
+    name: hostapd
+    state: present
+
+- name: Install hostapd configuration file
+  become: true
+  template:
+    dest: /etc/hostapd/hostapd.conf
+    group: root
+    mode: 0644
+    owner: root
+    src: etc/hostapd/hostapd.conf.j2
+
+- name: Install hostapd default file
+  become: true
+  template:
+    dest: /etc/default/hostapd
+    group: root
+    mode: 0644
+    owner: root
+    src: etc/default/hostapd.j2
+
+- name: Install wlan0 configuration file
+  become: true
+  template:
+    dest: /etc/network/interfaces.d/wlan
+    group: root
+    mode: 0644
+    owner: root
+    src: etc/network/interfaces.d/wlan.j2
+
+- name: Enable ipv4 forwarding
+  become: true
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
+    sysctl_file: /etc/sysctl.d/50-forward.conf
+    reload: yes
