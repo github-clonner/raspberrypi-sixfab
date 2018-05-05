@@ -18,4 +18,4 @@ Bootstrap tox virtualenv::
 
 Run ansible-playbook::
 
-  $ ansible-playbook -v -i inventory/hosts playbooks/site.yaml
+  (venv) $ ansible-playbook -v -i inventory/hosts playbooks/site.yaml --ask-pass
