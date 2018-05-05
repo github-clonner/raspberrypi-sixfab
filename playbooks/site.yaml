@@ -1,5 +1,6 @@
 - hosts: sixfab
   roles:
+    - ansible-role-ppp
     - ansible-role-hostapd
     - ansible-role-dnsmasq
     - ansible-role-iptables

@@ -1,0 +1,50 @@
+- name: Ensure ppp is installed
+  become: true
+  package:
+    name: ppp
+    state: present
+
+- name: Install ppp connect configuration
+  become: true
+  template:
+    dest: /etc/chatscripts/quectel-chat-connect
+    group: root
+    mode: 0644
+    owner: root
+    src: etc/chatscripts/quectel-chat-connect.j2
+
+- name: Install ppp disconnect configuration
+  become: true
+  template:
+    dest: /etc/chatscripts/quectel-chat-disconnect
+    group: root
+    mode: 0644
+    owner: root
+    src: etc/chatscripts/quectel-chat-disconnect.j2
+
+- name: Install wait-dialup-hardware script
+  become: true
+  template:
+    dest: /etc/ppp/wait-dialup-hardware
+    group: root
+    mode: 0755
+    owner: root
+    src: etc/ppp/wait-dialup-hardware.j2
+
+- name: Install ppp peer configuration
+  become: true
+  template:
+    dest: /etc/ppp/peers/gprs
+    group: root
+    mode: 0644
+    owner: root
+    src: etc/ppp/peers/gprs.j2
+
+- name: Install network configuration
+  become: true
+  template:
+    dest: /etc/network/interfaces.d/tunnel
+    group: root
+    mode: 0644
+    owner: root
+    src: etc/network/interfaces.d/tunnel.j2
