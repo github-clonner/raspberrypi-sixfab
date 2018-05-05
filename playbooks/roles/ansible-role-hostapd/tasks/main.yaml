@@ -38,3 +38,11 @@
     value: 1
     sysctl_file: /etc/sysctl.d/50-forward.conf
     reload: yes
+
+- name: Enable hostapd service
+  become: true
+  systemd:
+    daemon_reload: true
+    enabled: true
+    name: hostapd
+    state: started

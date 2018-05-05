@@ -12,3 +12,11 @@
     mode: 0644
     owner: root
     src: etc/dnsmasq.d/wlan.conf.j2
+
+- name: Enable dnsmasq service
+  become: true
+  systemd:
+    daemon_reload: true
+    enabled: true
+    name: dnsmasq
+    state: started

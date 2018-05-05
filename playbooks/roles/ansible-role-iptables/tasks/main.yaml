@@ -21,3 +21,11 @@
     mode: 0644
     owner: root
     src: etc/iptables/rules.v6.j2
+
+- name: Enable netfilter-persistent service
+  become: true
+  systemd:
+    daemon_reload: true
+    enabled: true
+    name: netfilter-persistent
+    state: started
