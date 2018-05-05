@@ -1,8 +1,8 @@
 AUTHORS
 ChangeLog
 doc/build/
-# Production inventory
-inventory/production
+# Inventory file
+inventory/hosts
 # Roles installed from galaxy
 playbooks/roles/openstack.*
 .tox/
